@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>     
+<!DOCTYPE configuration     
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"     
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- changes from the defaults for testing -->
+		<setting name="cacheEnabled" value="false" />
+		<setting name="useGeneratedKeys" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+
+	<mappers>
+        <mapper resource="mappers/AppMapper.xml" />
+		<mapper resource="mappers/SerialCodeMapper.xml" />
+		<mapper resource="mappers/DistributeLockMapper.xml" />
+	</mappers>
+</configuration>
