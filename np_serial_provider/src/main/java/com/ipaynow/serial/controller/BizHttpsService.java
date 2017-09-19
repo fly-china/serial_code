@@ -1,10 +1,10 @@
 package com.ipaynow.serial.controller;
 
 
-import com.nowpay.devplat.common.util.RandomStringUtil;
-import com.nowpay.devplat.common.util.URLUtils;
+import com.nowpay.common.util.RandomStringUtil;
+import com.nowpay.common.util.URLUtils;
 import com.nowpay.wio.server.protocol.IWIOServiceProvider;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

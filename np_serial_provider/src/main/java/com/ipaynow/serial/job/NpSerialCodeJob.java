@@ -3,7 +3,7 @@ package com.ipaynow.serial.job;
 import com.ipaynow.serial.component.DSLockComponent;
 import com.ipaynow.serial.domain.DistributeLock;
 import com.ipaynow.serial.impl.SerialCodeService;
-import com.nowpay.devplat.common.util.DateUtil;
+import com.nowpay.common.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,16 +29,16 @@ public class NpSerialCodeJob {
     /**
      * 清理数据
      */
-    public void clearSerialCodeHistoryData(){
+    public void clearSerialCodeHistoryData() {
         long startTime = System.currentTimeMillis();
         logger.info("NpSerialCodeJob.clearSerialCodeHistoryData|流水号数据清理任务开始执行");
-        List<String> tableNameList =  serialCodeService.getSerialCodeTableName();
+        List<String> tableNameList = serialCodeService.getSerialCodeTableName();
         DistributeLock distributeLock = new DistributeLock();
-        for(int i=0;i<tableNameList.size();i++){
+        for (int i = 0; i < tableNameList.size(); i++) {
             String tableName = tableNameList.get(i);
-            distributeLock.setId(DateUtil.getStringFromDate(new Date(),"yyyyMMdd")+tableName);
+            distributeLock.setId(DateUtil.getStringFromDate(new Date(), "yyyyMMdd") + tableName);
             boolean flag = dsLockComponent.lock(distributeLock, 1);
-            if(flag) {
+            if (flag) {
                 try {
                     int count = serialCodeService.getSerialCodeTableCount(tableNameList.get(i));
                     logger.info("NpSerialCodeJob.clearSerialCodeHistoryData|流水号表：" + tableName + "，共有数据" + count + "条");
@@ -53,10 +53,10 @@ public class NpSerialCodeJob {
                     }
                 } catch (Exception e) {
                     logger.error("NpSerialCodeJob.clearSerialCodeHistoryData|清理表" + tableName + "发生异常", e);
-                }finally {
-                    dsLockComponent.unlock(distributeLock,1);
+                } finally {
+                    dsLockComponent.unlock(distributeLock, 1);
                 }
-            }else{
+            } else {
                 logger.info("NpSerialCodeJob.clearSerialCodeHistoryData|已经有机器正在清理表" + tableName);
             }
         }

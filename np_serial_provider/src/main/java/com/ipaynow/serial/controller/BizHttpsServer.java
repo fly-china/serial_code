@@ -1,6 +1,6 @@
 package com.ipaynow.serial.controller;
 
-import com.nowpay.devplat.common.util.PropertiesUtil;
+import com.nowpay.common.util.PropertiesUtil;
 import com.nowpay.wio.server.entity.DefaultHttpsServerConfig;
 import com.nowpay.wio.server.protocol.https.HttpsServer;
 import org.slf4j.Logger;
