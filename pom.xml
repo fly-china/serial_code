@@ -363,13 +363,13 @@
     </build>
 
 
-    <distributionManagement>
-        <!-- 发布版本地址（线上） -->
+  <!--  <distributionManagement>
+        &lt;!&ndash; 发布版本地址（线上） &ndash;&gt;
         <repository>
             <id>nexus-releases</id>
             <url>http://10.100.142.37:8080/nexus/content/repositories/releases/</url>
         </repository>
-        <!-- 快照版本地址（开发） -->
+        &lt;!&ndash; 快照版本地址（开发） &ndash;&gt;
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <url>http://10.100.142.37:8080/nexus/content/repositories/snapshots/</url>
@@ -390,6 +390,6 @@
             <layout>default</layout>
         </repository>
 
-    </repositories>
+    </repositories>-->
 
 </project>
