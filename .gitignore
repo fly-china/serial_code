@@ -6,7 +6,6 @@
 out/*
 target
 
-*/aliyun/
-*/jinrongyun/
-*/product/
-:q:
+aliyun/
+jinrongyun/
+product/
