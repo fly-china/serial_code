@@ -5,27 +5,28 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ipaynow</groupId>
+    <groupId>com.lpf</groupId>
     <artifactId>serial_code</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
 
     <modules>
-        <module>np_serial_api</module>
-        <module>np_serial_consumer</module>
-        <module>np_serial_wio_common</module>
-        <module>np_serial_dao</module>
-        <module>np_serial_domain</module>
-        <module>np_serial_provider</module>
-        <module>np_serial_service</module>
+        <module>lpf_serial_api</module>
+        <module>lpf_serial_consumer</module>
+        <module>lpf_serial_wio_common</module>
+        <module>lpf_serial_dao</module>
+        <module>lpf_serial_domain</module>
+        <module>lpf_serial_provider</module>
+        <module>lpf_serial_service</module>
     </modules>
 
     <!-- 公共配置 -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.springframework.version>3.2.4.RELEASE</org.springframework.version>
+        <lpf.serialCode.version>0.0.1-SNAPSHOT</lpf.serialCode.version>
     </properties>
 
     <dependencyManagement>
@@ -304,34 +305,34 @@
             </dependency>
 
             <dependency>
-                <groupId>com.ipaynow</groupId>
-                <artifactId>np_serial_domain</artifactId>
-                <version>2.0.1-SNAPSHOT</version>
+                <groupId>com.lpf</groupId>
+                <artifactId>lpf_serial_domain</artifactId>
+                <version>${lpf.serialCode.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.ipaynow</groupId>
-                <artifactId>np_serial_wio_common</artifactId>
-                <version>2.0.1-SNAPSHOT</version>
+                <groupId>com.lpf</groupId>
+                <artifactId>lpf_serial_wio_common</artifactId>
+                <version>${lpf.serialCode.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.ipaynow</groupId>
-                <artifactId>np_serial_dao</artifactId>
-                <version>2.0.1-SNAPSHOT</version>
+                <groupId>com.lpf</groupId>
+                <artifactId>lpf_serial_dao</artifactId>
+                <version>${lpf.serialCode.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.ipaynow</groupId>
-                <artifactId>np_serial_service</artifactId>
-                <version>2.0.1-SNAPSHOT</version>
+                <groupId>com.lpf</groupId>
+                <artifactId>lpf_serial_service</artifactId>
+                <version>${lpf.serialCode.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.ipaynow</groupId>
-                <artifactId>np_serial_provider</artifactId>
-                <version>2.0.1-SNAPSHOT</version>
+                <groupId>com.lpf</groupId>
+                <artifactId>lpf_serial_provider</artifactId>
+                <version>${lpf.serialCode.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.ipaynow</groupId>
-                <artifactId>np_serial_api</artifactId>
-                <version>2.0.2-SNAPSHOT</version>
+                <groupId>com.lpf</groupId>
+                <artifactId>lpf_serial_api</artifactId>
+                <version>${lpf.serialCode.version}</version>
             </dependency>
 
         </dependencies>
@@ -367,12 +368,12 @@
         &lt;!&ndash; 发布版本地址（线上） &ndash;&gt;
         <repository>
             <id>nexus-releases</id>
-            <url>http://10.100.142.37:8080/nexus/content/repositories/releases/</url>
+            <url>http://host:ip/nexus/content/repositories/releases/</url>
         </repository>
         &lt;!&ndash; 快照版本地址（开发） &ndash;&gt;
         <snapshotRepository>
             <id>nexus-snapshots</id>
-            <url>http://10.100.142.37:8080/nexus/content/repositories/snapshots/</url>
+            <url>http://host:ip/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -380,7 +381,7 @@
         <repository>
             <id>nexus</id>
             <name>Nexus</name>
-            <url>http://10.100.142.37:8080/nexus/content/groups/public</url>
+            <url>http://host:ip/nexus/content/groups/public</url>
             <releases>
                 <enabled>true</enabled>
             </releases>

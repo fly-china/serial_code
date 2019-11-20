@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+    <!-- 驱动包配置 -->
+    <context id="context1" >
+        <!-- 抑制注释的生成 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库连接配置 -->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.192.116:3306/test" userId="fund" password="fund" />-->
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/serial_code" userId="root" password="root" />
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!-- domain配置 -->
+
+        <javaModelGenerator targetPackage="com.lpf.serial.domain" targetProject="src/main/java" />
+        <sqlMapGenerator targetPackage="mappers" targetProject="src/main/resources" />
+        <!-- 生成DAO的类文件以及配置文件 -->
+        <javaClientGenerator targetPackage="com.lpf.serial.dao" targetProject="src/main/java" type="XMLMAPPER" />
+
+
+        <table schema="" tableName="distribute_lock" domainObjectName="DistributeLock">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+
+
+        <!--
+                <table schema="" tableName="ZK_MCH_SERVICE_CONTROL" domainObjectName="MCHServiceCtl">
+                    <property name="useActualColumnNames" value="false"/>
+                </table>
+         -->
+    </context>
+</generatorConfiguration>

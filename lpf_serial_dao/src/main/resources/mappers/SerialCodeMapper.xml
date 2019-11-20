@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lpf.serial.dao.SerialCodeMapper" >
+
+    <insert id="insertAutoID" parameterType="java.lang.String">
+      insert into ${value} values();
+  </insert>
+
+    <select id="getLastInsertId" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID();
+  </select>
+
+    <delete id="deleteAutoID" parameterType="java.lang.Long">
+      delete from ${value} where id=#{id:BIGINT}
+  </delete>
+
+    <update id="setAutoIncrementIncrement" parameterType="int">
+    set  auto_increment_increment = #{stepFactor:INTEGER}
+  </update>
+
+    <select id="getSerialCodeTableName" resultType="String" >
+    select table_name from information_schema.tables where table_schema='serial_code' and table_name like 'serialcode_%'
+  </select>
+
+    <select id="getTableCount" resultType="int" parameterType="map">
+    select count(1) from information_schema.tables where table_schema='serial_code' and table_name =  #{tableName:VARCHAR}
+  </select>
+
+    <select id="getSerialCodeTableCount" parameterType="map" resultType="int">
+    select count(1) from ${tableName} where 1=1
+  </select>
+
+    <delete id="clearSerialCodeData" parameterType="map">
+    delete from ${tableName} where id <![CDATA[<]]> (select a.id from (select max(id) as id  from ${tableName}) a)
+  </delete>
+
+
+</mapper>

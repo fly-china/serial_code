@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<bean id="serviceSourceProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:dubbo.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}" />
+
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry id="lpfRegistry" address="${dubbo.registry.address}" />
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" heartbeat="10000"/>
+
+	<dubbo:service interface="com.lpf.serial.pub.itf.IGetSerialCodeService"
+				   ref="getSerialCodeService" registry="lpfRegistry" group="${dubbo.service.group}"
+				   version="${dubbo.service.version}" timeout="10000" retries="0">
+	</dubbo:service>
+
+	<!-- http请求入口 -->
+	<bean class="com.lpf.serial.utils.ComponentLocator"/>
+	<bean class="com.lpf.serial.controller.BizHttpsServer"/>
+
+</beans>
