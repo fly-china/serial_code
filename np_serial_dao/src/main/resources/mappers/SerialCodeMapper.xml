@@ -19,11 +19,11 @@
   </update>
 
   <select id="getSerialCodeTableName" resultType="String" >
-    select table_name from information_schema.tables where table_schema='np_serial_code' and table_name like 'serialcode_%'
+    select table_name from information_schema.tables where table_schema='serial_code' and table_name like 'serialcode_%'
   </select>
 
   <select id="getTableCount" resultType="int" parameterType="map">
-    select count(1) from information_schema.tables where table_schema='np_serial_code' and table_name =  #{tableName:VARCHAR}
+    select count(1) from information_schema.tables where table_schema='serial_code' and table_name =  #{tableName:VARCHAR}
   </select>
 
   <select id="getSerialCodeTableCount" parameterType="map" resultType="int">

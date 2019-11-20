@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author lipengfei
+ * @author
  * @create 2017-10-16 10:51
  **/
 public class Map1 {

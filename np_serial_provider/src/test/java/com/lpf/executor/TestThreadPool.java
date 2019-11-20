@@ -3,7 +3,7 @@ package com.lpf.executor;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author lipengfei
+ * @author
  * @create 2018-05-04 11:09
  **/
 public class TestThreadPool {

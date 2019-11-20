@@ -1,15 +1,15 @@
 package com.ipaynow.serial.test;
 
 /**
- * @author lipengfei
+ * @author
  * @create 2017-10-11 18:37
  **/
 public class Demo {
 
     public static void main(String[] args) throws Exception {
 
-//        String cmd = "calc";
-//        Runtime.getRuntime().exec(cmd);
+        String cmd = "calc";
+        Runtime.getRuntime().exec(cmd);
 
         System.out.println(foo(3));
 

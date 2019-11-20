@@ -52,14 +52,15 @@ public class HttpsServer implements IProtocolServer {
         // 设置 pipeline factory.
         bootstrap.setPipelineFactory(new HttpsPipelineFactory((HttpsServerConfig) getWIOServerConfig()));
 
-        //关闭纳格算法
+        // 关闭纳格算法(Nagle算法会产生明显的时延)，保证小消息无时延地发送
         bootstrap.setOption("child.tcpNoDelay", true);
         //
         bootstrap.setOption("child.keepAlive", true);
 
+        // 允许一个进程重新使用仍处于2MSL等待的端口
         bootstrap.setOption("reuseAddress", true);
 
-        //最大连接队列中的可承载量
+        // 最大连接队列中的可承载量
         bootstrap.setOption("backlog",1000);
 
         // 绑定端口

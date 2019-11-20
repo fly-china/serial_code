@@ -6,16 +6,16 @@
        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
     <!-- 流水号定时任务 job -->
-    <bean id="npSerialCodeJob" class="com.ipaynow.serial.job.NpSerialCodeJob"/>
+    <bean id="serialCodeJob" class="com.ipaynow.serial.job.NpSerialCodeJob"/>
 
 
     <!--指定线程池大小的TaskScheduler  线程池的大小与Job的个数保持一致-->
-    <task:scheduler id="NpSerialCodeVerify" pool-size="1"/>
+    <task:scheduler id="SerialCodeVerify" pool-size="1"/>
 
     <!-- 定时任务配置-->
-    <task:scheduled-tasks scheduler="NpSerialCodeVerify">
+    <task:scheduled-tasks scheduler="SerialCodeVerify">
         <!--清理数据每天晚上4点执行-->
-        <task:scheduled ref="npSerialCodeJob" method="clearSerialCodeHistoryData" cron="0 0 4 * * ?"/>
+        <task:scheduled ref="serialCodeJob" method="clearSerialCodeHistoryData" cron="0 0 4 * * ?"/>
     </task:scheduled-tasks>
 
 </beans>

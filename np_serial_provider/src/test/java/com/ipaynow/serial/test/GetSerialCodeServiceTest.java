@@ -12,11 +12,13 @@ import javax.annotation.Resource;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @ClassName: GetSerialCodeServiceTest
  * @Description: TODO
- * @Author mengliangliang
+ * @Author
  * @Date 2016/3/23 10:30
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,20 +36,20 @@ public class GetSerialCodeServiceTest {
 
     @Test
     public void getPospSerialCodeTest() throws InterruptedException {
-        String serialCode = getSerialCodeService.getPospSerialCode("2000");
+        String serialCode = getSerialCodeService.getPospSerialCode("1000");
         System.out.println("**********************serialCode=" + serialCode);
     }
 
 
     @Test
     public void getSerialCodeTest() throws InterruptedException {
-        String serialCode = getSerialCodeService.getSerialCode("2000", "01");
+        String serialCode = getSerialCodeService.getSerialCode("1000", "01");
         System.out.println("**********************serialCode=" + serialCode);
        /* while(true){
 
         }*/
 
-        /*ExecuttrService pool = Executors.newFixedThreadPool(100);
+        ExecutorService pool = Executors.newFixedThreadPool(100);
         for (int i = 0; i < 100; i++) {
             pool.execute(new Thread(new Runnable() {
                 @Override
@@ -56,7 +58,7 @@ public class GetSerialCodeServiceTest {
                         for (int j = 0; j < 501; j++) {
                             String serialCode = getSerialCodeService.getSerialCode("1000", "01");
                             System.out.println("**********************serialCode=" + serialCode);
-                            String serialCode2 = getSerialCodeService.getSerialCode("1001", "01");
+                            String serialCode2 = getSerialCodeService.getSerialCode("2000", "01");
                             System.out.println("**********************serialCode=" + serialCode2);
                             if (serialCode == null || serialCode2 == null) {
                                 throw new Exception("出现空流水号");
@@ -89,7 +91,7 @@ public class GetSerialCodeServiceTest {
             logger.info("-------------------------");
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
        /* while(true){
 
         }*/
